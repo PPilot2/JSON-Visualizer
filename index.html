@@ -4,79 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JSON Visualizer</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            overflow-x: hidden;
-            margin: 0;
-            padding: 0;
-        }
-        h1 {
-            color: #333;
-        }
-        textarea {
-            margin: auto;
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-        }
-        button {
-            padding: 10px 15px;
-            background-color: #28a745;
-            border-radius: 3px;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #218838;
-        }
-        ul {
-            list-style-type: none;
-            padding-left: 0;
-            margin-left:0;
-            width: 100%;
-        }
-        li {
-            padding-left: 20px;
-        }
-        .collapsible {
-            cursor: pointer;
-            font-weight: bold;
-            color: #fff;
-            background-color: #6c6c6c;
-            border-radius: 3px;
-            padding: 5px;
-            text-align: auto;
-            margin-top: 10px;
-            left: 0;
-        }
-        .collapsible:hover {
-            text-decoration: underline;
-        }
-        #footer {
-            width: 100%;
-            bottom: 0;
-            position: fixed;
-            padding: 15px;
-            color: white;
-            background-color: #6c6c6c;
-            text-align: center;
-        }
-        #container {
-            padding: 10px;
-            margin: auto;
-            width: 60%;
-        }
-        a {
-            color: white;
-            text-decoration: underline;
-        }
-        a:hover {
-            font-weight: bold;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="container">
@@ -89,46 +17,7 @@
     <br>
     <div id="footer">Created by <a href="https://github.com/PPilot2">Prahalad Anand</a></div>  
 
-    <script>
-        document.getElementById('renderBtn').addEventListener('click', function() {
-            const jsonInput = document.getElementById('jsonInput').value;
-
-            try {
-                const jsonData = JSON.parse(jsonInput);
-                document.getElementById('jsonOutput').innerHTML = '';
-                renderJson(jsonData, document.getElementById('jsonOutput'));
-            } catch (e) {
-                document.getElementById('jsonOutput').innerText = 'Invalid JSON: ' + e.message;
-            }
-        });
-
-        function renderJson(jsonData, container) {
-            const ul = document.createElement('ul');
-
-            for (const key in jsonData) {
-                const li = document.createElement('li');
-                li.textContent = key + ': ';
-
-                if (typeof jsonData[key] === 'object' && jsonData[key] !== null) {
-                    li.classList.add('collapsible');
-                    const childContainer = document.createElement('div')
-                    childContainer.style.display = 'none'; // Initially hide child nodes
-                    li.appendChild(childContainer);
-                    renderJson(jsonData[key], childContainer); // Recursively render child nodes
-
-                    li.addEventListener('click', function(event) {
-                        event.stopPropagation(); // Prevent event bubbling
-                        childContainer.style.display = childContainer.style.display === 'none' ? 'block' : 'none';
-                    });
-                } else {
-                    li.textContent += jsonData[key]; // Display value for primitive types
-                }
-
-                ul.appendChild(li);
-            }
-
-            container.appendChild(ul);
-        }
+    <script src="script.js">
     </script>
 </body>
 </html>
