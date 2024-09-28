@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Visualizer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+        .collapsible {
+            cursor: pointer;
+            font-weight: bold;
+            color: #007bff;
+        }
+        .collapsible:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>JSON Visualizer</h1>
+    <textarea id="jsonInput" rows="10" placeholder='Enter JSON here...'></textarea><br>
+    <button id="renderBtn">Render JSON</button>
+    <div id="jsonOutput"></div>
+
+    <script>
+        document.getElementById('renderBtn').addEventListener('click', function() {
+            const jsonInput = document.getElementById('jsonInput').value;
+
+            try {
+                const jsonData = JSON.parse(jsonInput);
+                document.getElementById('jsonOutput').innerHTML = '';
+                renderJson(jsonData, document.getElementById('jsonOutput'));
+            } catch (e) {
+                document.getElementById('jsonOutput').innerText = 'Invalid JSON: ' + e.message;
+            }
+        });
+
+        function renderJson(jsonData, container) {
+            const ul = document.createElement('ul');
+
+            for (const key in jsonData) {
+                const li = document.createElement('li');
+                li.textContent = key + ': ';
+
+                if (typeof jsonData[key] === 'object' && jsonData[key] !== null) {
+                    li.classList.add('collapsible');
+                    const childContainer = document.createElement('div');
+                    childContainer.style.display = 'none'; // Initially hide child nodes
+                    li.appendChild(childContainer);
+                    renderJson(jsonData[key], childContainer); // Recursively render child nodes
+
+                    li.addEventListener('click', function(event) {
+                        event.stopPropagation(); // Prevent event bubbling
+                        childContainer.style.display = childContainer.style.display === 'none' ? 'block' : 'none';
+                    });
+                } else {
+                    li.textContent += jsonData[key]; // Display value for primitive types
+                }
+
+                ul.appendChild(li);
+            }
+
+            container.appendChild(ul);
+        }
+    </script>
+</body>
+</html>
