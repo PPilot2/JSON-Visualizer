@@ -1,1 +1,1 @@
-Visualizes JSON with HTML, CSS, and Javascript.
+Recursively visualizes JSON with HTML, CSS, and Javascript.
