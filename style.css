@@ -1,66 +1,94 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
-    overflow-x: hidden;
     margin: 0;
     padding: 0;
 }
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
 h1 {
+    text-align: center;
     color: #333;
 }
+
 textarea {
-    margin: auto;
-    width: 100%;
+    width: calc(100% - 22px);
+    height: 200px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
     padding: 10px;
-    margin-bottom: 10px;
+    font-size: 16px;
+    resize: none;
 }
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
 button {
-    padding: 10px 15px;
-    background-color: #28a745;
-    border-radius: 3px;
+    flex: 1; /* Makes both buttons take equal space */
+    padding: 10px;
+    margin: 0 5px; /* Add some space between buttons */
+    background-color: #007BFF;
     color: white;
     border: none;
+    border-radius: 4px;
+    font-size: 16px;
     cursor: pointer;
 }
+
 button:hover {
-    background-color: #218838;
+    background-color: #0056b3;
 }
-ul {
+
+#jsonOutput {
+    margin-top: 20px;
+    padding: 10px;
+    background: #fafafa;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    overflow-y: auto;
+}
+
+/* JSON List */
+.json-list {
     list-style-type: none;
-    padding-left: 0;
-    margin-left:0;
-    width: 100%;
-}
-li {
     padding-left: 20px;
 }
-.collapsible {
+
+.json-item {
+    margin: 5px 0;
+}
+
+.toggle-btn {
     cursor: pointer;
     font-weight: bold;
-    color: #fff;
-    background-color: #6c6c6c;
-    border-radius: 3px;
-    padding: 5px;
-    text-align: auto;
-    margin-top: 10px;
-    left: 0;
+    margin-right: 5px;
+    color: #007BFF;
 }
-.collapsible:hover {
-    text-decoration: underline;
+
+.toggle-btn:hover {
+    color: #0056b3;
 }
+
 #footer {
     width: 100%;
     bottom: 0;
     position: fixed;
-    padding: 15px;
+    padding: 25px;
     color: white;
-    background-color: #6c6c6c;
+    background-color: #007BFF;
     text-align: center;
-}
-#container {
-    padding: 10px;
-    margin: auto;
-    width: 60%;
 }
 a {
     color: white;

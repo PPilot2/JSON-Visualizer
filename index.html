@@ -7,17 +7,18 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="container">
+    <br>
+    <div class="container">
         <h1>JSON Visualizer</h1>
-        <textarea id="jsonInput" rows="10" placeholder='Enter JSON here...'></textarea><br>
-        <button id="renderBtn">Render JSON</button>
+        <textarea id="jsonInput" placeholder="Paste your JSON here..."></textarea>
+        <div class="button-container">
+            <button id="renderButton">Render JSON</button>
+            <button id="expandButton">Expand All</button>
+        </div>
         <div id="jsonOutput"></div>
     </div>
-    <br>
-    <br>
-    <div id="footer">Created by <a href="https://github.com/PPilot2">Prahalad Anand</a></div>  
-
-    <script src="script.js">
-    </script>
+    <br><br>
+    <div id="footer">Created by <a href="https://github.com/PPilot2">Prahalad Anand</a></div>
+    <script src="script.js"></script>
 </body>
 </html>
