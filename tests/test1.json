@@ -1,0 +1,88 @@
+{
+   "company": {
+     "name": "Tech Innovations Inc.",
+     "location": {
+       "address": {
+         "street": "123 Tech Lane",
+         "city": "Innovation City",
+         "state": "CA",
+         "zip": "90210"
+       },
+       "country": "USA"
+     },
+     "departments": [
+       {
+         "name": "Research and Development",
+         "employees": [
+           {
+             "id": 1,
+             "name": "Alice Johnson",
+             "role": "Lead Scientist",
+             "skills": ["Python", "Machine Learning", "Data Analysis"],
+             "projects": [
+               {
+                 "title": "AI for Climate Change",
+                 "budget": 500000,
+                 "duration": "12 months",
+                 "status": "In Progress"
+               },
+               {
+                 "title": "Quantum Computing Research",
+                 "budget": 300000,
+                 "duration": "24 months",
+                 "status": "Planned"
+               }
+             ]
+           },
+           {
+             "id": 2,
+             "name": "Bob Smith",
+             "role": "Software Engineer",
+             "skills": ["JavaScript", "React", "Node.js"],
+             "projects": []
+           }
+         ]
+       },
+       {
+         "name": "Marketing",
+         "employees": [
+           {
+             "id": 3,
+             "name": "Carol White",
+             "role": "Marketing Manager",
+             "skills": ["SEO", "Content Marketing", "Social Media"],
+             "projects": [
+               {
+                 "title": "Brand Awareness Campaign",
+                 "budget": 100000,
+                 "duration": "6 months",
+                 "status": "Completed"
+               }
+             ]
+           }
+         ]
+       }
+     ],
+     "financials": {
+       "revenue": 5000000,
+       "expenses": 3000000,
+       "profit": 2000000,
+       "year": 2023
+     },
+     "clients": [
+       {
+         "name": "Global Tech Corp",
+         "contractValue": 1000000,
+         "startDate": "2022-01-15",
+         "endDate": "2024-01-15"
+       },
+       {
+         "name": "Future Innovations LLC",
+         "contractValue": 750000,
+         "startDate": "2023-06-01",
+         "endDate": "2025-06-01"
+       }
+     ]
+   }
+ }
+ 

@@ -1,0 +1,127 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+textarea {
+    width: calc(100% - 22px);
+    height: 200px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 16px;
+    resize: none;
+    background-color: rgb(241, 241, 241);
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+button, input {
+    flex: 1; /* Makes both buttons take equal space */
+    padding: 10px;
+    margin: 0 5px; /* Add some space between buttons */
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+button:disabled {
+    background-color: #c00000; /* Gray color for disabled state */
+    cursor: not-allowed; /* Show not-allowed cursor */
+    color: #fff; /* Change text color to a lighter shade */
+}
+input[type="file"] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0; /* Make input invisible but clickable */
+    cursor: pointer;
+}
+#jsonOutput {
+    margin-top: 10px;
+    padding: 10px;
+    background: rgb(241, 241, 241);
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    overflow-y: auto;
+}
+
+/* JSON List */
+.json-list {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+.json-item {
+    margin: 5px 0;
+    padding-left: 10px;
+}
+
+.toggle-btn {
+    cursor: pointer;
+    font-weight: bold;
+    margin-right: 5px;
+    color: #007BFF;
+}
+
+.toggle-btn:hover {
+    color: #0056b3;
+}
+
+#footer {
+    width: 100%;
+    bottom: 0;
+    position: fixed;
+    padding: 25px;
+    color: white;
+    background-color: #007BFF;
+    text-align: center;
+    align-items: center;
+}
+a {
+    color: white;
+    text-decoration: underline;
+}
+a:hover {
+    font-weight: bold;
+}
+
+.drop-area {
+    border: 2px dashed #007BFF;
+    padding: 20px;
+    text-align: center;
+    margin: 10px 0;
+    color: #007BFF;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.drop-area.highlight {
+    background-color: #e7f0ff; /* Light blue background on hover */
+}
