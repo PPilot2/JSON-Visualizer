@@ -35,7 +35,7 @@ textarea {
     margin: 10px 0;
 }
 
-button {
+button, input {
     flex: 1; /* Makes both buttons take equal space */
     padding: 10px;
     margin: 0 5px; /* Add some space between buttons */
@@ -50,9 +50,15 @@ button {
 button:hover {
     background-color: #0056b3;
 }
-
+input[type="file"] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0; /* Make input invisible but clickable */
+    cursor: pointer;
+}
 #jsonOutput {
-    margin-top: 20px;
+    margin-top: 10px;
     padding: 10px;
     background: #fafafa;
     border: 1px solid #ccc;
@@ -68,6 +74,7 @@ button:hover {
 
 .json-item {
     margin: 5px 0;
+    padding-left: 10px;
 }
 
 .toggle-btn {

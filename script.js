@@ -1,7 +1,7 @@
 const jsonOutput = document.getElementById('jsonOutput');
 jsonOutput.style.display = 'none';
 
-document.getElementById('renderButton').addEventListener('click', function() {
+function renderButton() {
     const jsonInput = document.getElementById('jsonInput').value;
     jsonOutput.style.display = 'block'; // Show the output div
 
@@ -12,8 +12,7 @@ document.getElementById('renderButton').addEventListener('click', function() {
     } catch (e) {
         jsonOutput.innerHTML = `<p style="color: red;">Invalid JSON: ${e.message}</p>`;
     }
-});
-
+}
 // Expand All functionality
 document.getElementById('expandButton').addEventListener('click', function() {
     const items = document.querySelectorAll('.toggle-btn');
@@ -25,6 +24,24 @@ document.getElementById('expandButton').addEventListener('click', function() {
             // console.log(item); // Expand the nested list
         }
     });
+});
+
+document.getElementById('file-input').addEventListener('change', function(event) {
+    const file = event.target.files[0]; // Get the uploaded file
+
+    if (file && file.type === 'application/json') { // Check if it's a JSON file
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+            const jsonData = e.target.result; // Get file content
+            document.getElementById('jsonInput').value = jsonData; // Paste into textarea
+            renderButton();
+        };
+
+        reader.readAsText(file); // Read the file as text
+    } else {
+        alert('Please upload a valid JSON file.'); // Alert for invalid files
+    }
 });
 
 // Function to expand a list and its children

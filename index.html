@@ -12,8 +12,12 @@
         <h1>JSON Visualizer</h1>
         <textarea id="jsonInput" placeholder="Paste your JSON here..."></textarea>
         <div class="button-container">
-            <button id="renderButton">Render JSON</button>
+            <button id="renderButton" onclick="renderButton()">Render JSON</button>
             <button id="expandButton">Expand All</button>
+            <div class="file-upload">
+                <input type="file" id="file-input" class="file-input" />
+                <button class="file-button" id="file-input-button" onclick="document.getElementById('file-input').click();">Choose File</button>
+            </div>
         </div>
         <div id="jsonOutput"></div>
     </div>
