@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XML Visualizer</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <br>
+    <header>
+        <a href="{{ url_for('index') }}" class="header-link">Home</a>
+        <div class="verticalLine"></div>
+        <a href="{{ url_for('CSV') }}" class="header-link">CSV Visualizer</a>
+        <div class="verticalLine"></div>
+        <a href="{{ url_for('JSON') }}" class="header-link">JSON Visualizer</a>
+    </header>
+    <div class="container">
+        <h1>XML Visualizer</h1>
+        <textarea id="xmlInput" placeholder="Paste your XML here"></textarea>
+        <div class="button-container">
+            <button id="renderButton" onclick="renderXML()">Render XML</button>
+            <button id="expandButton" disabled>Expand All</button>
+        </div>
+        <div class="drop-area" id="dropArea" onclick="document.getElementById('file-input').click();">
+            <input type="file" id="file-input" class="file-input" accept=".xml"/>
+            Drag and drop your XML file here or click to upload
+        </div>
+        <div id="errorOutput"></div>
+        <div id="xmlOutput" style="display:none;"></div>
+    </div>
+    <br><br><br><br><br>
+    <div id="footer">Created by <a href="https://github.com/PPilot2">Prahalad Anand</a></div>
+    <script type="text/javascript" src="{{url_for('static', filename='xml.js')}}"></script>
+</body>
+</html>

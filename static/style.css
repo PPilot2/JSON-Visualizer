@@ -1,0 +1,243 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 60%;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 80px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+textarea {
+    width: calc(100% - 22px);
+    height: 200px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 16px;
+    resize: none;
+    background-color: rgb(241, 241, 241);
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+button, input {
+    flex: 1; /* Makes both buttons take equal space */
+    padding: 10px;
+    margin: 0 5px; /* Add some space between buttons */
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+button:disabled {
+    background-color: #c00000; /* Gray color for disabled state */
+    cursor: not-allowed; /* Show not-allowed cursor */
+    color: #fff; /* Change text color to a lighter shade */
+}
+input[type="file"] {
+    position: absolute;
+    opacity: 0; /* Make input invisible but clickable */
+    cursor: pointer;
+}
+#jsonOutput, #csvOutput, #xmlOutput{
+    margin-top: 10px;
+    padding: 10px;
+    background: rgb(241, 241, 241);
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    overflow-y: auto;
+}
+
+.loadMoreBtn {
+    margin: 0;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+/* JSON List */
+.json-list {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+.json-item {
+    margin: 5px 0;
+    padding-left: 10px;
+}
+
+.toggle-btn {
+    cursor: pointer;
+    font-weight: bold;
+    margin-right: 5px;
+    color: #007BFF;
+}
+
+.toggle-btn:hover {
+    color: #0056b3;
+}
+
+ul {
+    list-style-type: none;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+.indicator {
+    margin-right: 5px; /* Space between indicator and text */
+    cursor: pointer; /* Change cursor for better UX */
+}
+
+#footer {
+    width: 100%;
+    bottom: 0;
+    position: fixed;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    color: white;
+    background-color: #007BFF;
+    text-align: center;
+    align-items: center;
+}
+header {
+    background-color: #007BFF;
+    width: 100%;
+    top: 0;
+    position: fixed;
+    text-align: center;
+    display: flex;
+    align-content: center;
+}
+.header-link {
+    flex: 1;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    background-color: #007BFF;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
+}
+.verticalLine {
+    border-left: 3px solid #fff;
+}
+.header-link:hover, .header-link a:hover {
+    background-color: #0056b3;
+    text-decoration: none;
+}
+
+.header-link-home {
+    flex: 1;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    background-color: #007BFF;
+    text-decoration: none;
+}
+
+a {
+    color: white;
+    text-decoration: underline;
+}
+a:hover {
+    font-weight: bold;
+}
+
+.drop-area {
+    border: 2px dashed #007BFF;
+    padding: 20px;
+    text-align: center;
+    margin: 10px 0;
+    color: #007BFF;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.drop-area.highlight {
+    background-color: #e7f0ff; /* Light blue background on hover */
+}
+/* CSV Table Styling */
+.csv-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.csv-table th, .csv-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.csv-table th {
+    background-color: #007BFF;
+    color: white;
+}
+
+.csv-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.csv-table tr:hover {
+    background-color: #ddd;
+}
+
+.home-container {
+    max-width: 60%;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.box {
+    flex: 1; /* Make boxes flexible */
+    margin: 10px; /* Space between boxes */
+    padding: 20px; /* Padding inside boxes */
+    background-color: #007BFF; /* Default background color */
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
+    border: 3px black solid;
+}
+
+.box:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+    transform: translateY(-3px); /* Lift effect on hover */
+    font-weight: bold;
+}
+
+.box-container {
+    width: 80%;
+    height: 100%;
+    margin: auto;
+}

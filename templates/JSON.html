@@ -4,10 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JSON Visualizer</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="static/style.css">
 </head>
 <body>
     <br>
+    <header id="header">
+        <a href="{{ url_for('index') }}" class="header-link">Home</a>
+        <div class="verticalLine"></div>
+        <a href="{{ url_for('CSV') }}" class="header-link">CSV Visualizer</a>
+        <div class="verticalLine"></div>
+        <a href="{{ url_for('XML') }}" class="header-link">XML Visualizer</a>
+    </header>
     <div class="container">
         <h1>JSON Visualizer</h1>
         <textarea id="jsonInput" placeholder="Paste your JSON here or upload below" maxlength="15000"></textarea>
@@ -16,13 +23,13 @@
             <button id="expandButton" disabled>Expand All</button>
         </div>
         <div class="drop-area" id="dropArea" onclick="document.getElementById('file-input').click();">
-            <input type="file" id="file-input" class="file-input" />
             Drag and drop your JSON file here or click to upload
-        </div>        
+        </div>  
+        <input type="file" id="file-input" class="file-input" accept=".json"/>      
         <div id="jsonOutput"></div>
     </div>
     <br><br><br><br><br>
     <div id="footer">Created by <a href="https://github.com/PPilot2">Prahalad Anand</a></div>
-    <script src="script.js"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='json.js')}}"></script>
 </body>
 </html>

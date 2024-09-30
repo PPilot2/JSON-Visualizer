@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV Visualizer</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <br>
+    <header>
+        <a href="{{ url_for('index') }}" class="header-link">Home</a>
+        <div class="verticalLine"></div>
+        <a href="{{ url_for('JSON') }}" class="header-link">JSON Visualizer</a>
+        <div class="verticalLine"></div>
+        <a href="{{ url_for('XML') }}" class="header-link">XML Visualizer</a>
+    </header>
+    <div class="container">
+        <h1>CSV Visualizer</h1>
+        <textarea id="csvInput" placeholder="Paste your CSV here or upload below" maxlength="15000"></textarea>
+        <div class="button-container">
+            <button id="renderButton" onclick="renderButton()">Render CSV</button>
+        </div>
+        <div class="drop-area" id="dropArea" onclick="document.getElementById('file-input').click();">
+            <input type="file" id="file-input" class="file-input" accept=".csv"/>
+            Drag and drop your CSV file here or click to upload
+        </div>        
+        <div id="csvOutput"></div>
+    </div>
+    <br><br><br><br><br>
+    <div id="footer">Created by <a href="https://github.com/PPilot2">Prahalad Anand</a></div>
+    <script type="text/javascript" src="{{url_for('static', filename='csv.js')}}"></script>
+</body>
+</html>
