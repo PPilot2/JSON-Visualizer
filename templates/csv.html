@@ -19,7 +19,7 @@
         <h1>CSV Visualizer</h1>
         <textarea id="csvInput" placeholder="Paste your CSV here or upload below" maxlength="15000"></textarea>
         <div class="button-container">
-            <button id="renderButton" onclick="renderButton()">Render CSV</button>
+            <button id="renderButton" onclick="renderCSV()">Render CSV</button>
         </div>
         <div class="drop-area" id="dropArea" onclick="document.getElementById('file-input').click();">
             <input type="file" id="file-input" class="file-input" accept=".csv"/>
@@ -30,5 +30,6 @@
     <br><br><br><br><br>
     <div id="footer">Created by <a href="https://github.com/PPilot2">Prahalad Anand</a></div>
     <script type="text/javascript" src="{{url_for('static', filename='csv.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
 </body>
 </html>

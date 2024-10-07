@@ -232,8 +232,21 @@ a:hover {
 
 .box:hover {
     background-color: #0056b3; /* Darker shade on hover */
-    transform: translateY(-3px); /* Lift effect on hover */
     font-weight: bold;
+}
+
+.box a {
+    background-color: transparent !important;
+}
+
+.csv-table-container {
+    overflow-x: auto; /* Enables horizontal scrolling */
+    margin-bottom: 10px;
+    white-space: nowrap; /* Prevents columns from wrapping */
+}
+
+.csv-table-btn {
+    width: 100%;
 }
 
 .box-container {
