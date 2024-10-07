@@ -1,21 +1,21 @@
 const csvOutput = document.getElementById('csvOutput');
 csvOutput.style.display = 'none';
-let defaultRowCount = 10; // Set default row count
+let defaultRowCount = 50; // Set default row count
 
-function renderCSV() {
-    const csvInput = document.getElementById('csvInput').value;
-    const expandButton = document.getElementById('expandButton');
+function renderCSV(csvData) {
     csvOutput.style.display = 'block';
 
     try {
-        let csvData = csvInput.split('\n').map(row => row.split(','));
-        csvOutput.innerHTML = ''; 
-        csvOutput.appendChild(createTable(csvData));
+        const parsedData = Papa.parse(csvData, {
+            header: false, // Header is treated as the first row
+            skipEmptyLines: true
+        });
 
-        expandButton.disabled = false;
+        // Pass the parsed data to the table rendering function
+        csvOutput.innerHTML = ''; 
+        csvOutput.appendChild(createTable(parsedData.data));
     } catch (e) {
         csvOutput.innerHTML = `<p style="color: red; font-weight: bold;">Invalid CSV: ${e.message}</p>`;
-        expandButton.disabled = true;
     }
 }
 
@@ -23,13 +23,12 @@ function createTable(data) {
     const table = document.createElement('table');
     table.classList.add('csv-table'); // Add a class for CSS styling
 
-    // Add row numbering and limit displayed rows
     data.slice(0, defaultRowCount).forEach((row, rowIndex) => {
         const tr = document.createElement('tr');
 
-        // Create a row number column
+        // Add row number column
         const rowNumberCell = document.createElement('th');
-        rowNumberCell.textContent = rowIndex + 1; // Row number
+        rowNumberCell.textContent = rowIndex + 1;
         tr.appendChild(rowNumberCell);
 
         // Populate the rest of the columns
@@ -41,13 +40,13 @@ function createTable(data) {
         table.appendChild(tr);
     });
 
-    // Add "Load More" functionality if data exceeds defaultRowCount
     if (data.length > defaultRowCount) {
         const loadMoreBtn = document.createElement('button');
+        loadMoreBtn.classList.add('csv-table-btn');
         loadMoreBtn.textContent = "Load More";
         loadMoreBtn.onclick = () => {
-            defaultRowCount += 10; // Increase row count by 10
-            renderCSV(); // Re-render the table with more rows
+            defaultRowCount += 10;
+            renderCSV(document.getElementById('csvInput').value);
         };
         csvOutput.appendChild(loadMoreBtn);
     }
@@ -64,7 +63,7 @@ document.getElementById('file-input').addEventListener('change', function(event)
             reader.onload = function(e) {
                 const csvData = e.target.result;
                 document.getElementById('csvInput').value = csvData;
-                renderCSV();
+                renderCSV(csvData);
             };
             reader.readAsText(file);
         } else {
@@ -77,7 +76,7 @@ document.getElementById('file-input').addEventListener('change', function(event)
     }
 });
 
-// Drag and drop functionality (same as before)
+// Drag and drop functionality
 const dropArea = document.getElementById('dropArea');
 ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
     dropArea.addEventListener(eventName, preventDefaults, false);
@@ -90,6 +89,22 @@ const dropArea = document.getElementById('dropArea');
     dropArea.addEventListener(eventName, unhighlight, false);
 });
 dropArea.addEventListener('drop', handleDrop, false);
+
+let fileInputTriggered = false; // Flag to prevent double trigger
+
+// Stop event propagation on click in the drop area to avoid the file input opening twice
+dropArea.addEventListener('click', function(event) {
+    if (!fileInputTriggered) {
+        document.getElementById('file-input').click();
+        fileInputTriggered = true; // Set the flag
+    }
+    event.stopPropagation(); // Prevent event from bubbling up
+});
+
+// Reset flag after file input action completes
+document.getElementById('file-input').addEventListener('click', function(event) {
+    fileInputTriggered = false; // Reset flag after the file input is clicked
+});
 
 function preventDefaults(e) { e.preventDefault(); e.stopPropagation(); }
 function highlight() { dropArea.classList.add('highlight'); }
