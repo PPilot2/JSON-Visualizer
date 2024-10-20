@@ -9,8 +9,6 @@
 <body>
     <br>
     <header>
-        <a href="{{ url_for('index') }}" class="header-link">Home</a>
-        <div class="verticalLine"></div>
         <a href="{{ url_for('JSON') }}" class="header-link">JSON Visualizer</a>
         <div class="verticalLine"></div>
         <a href="{{ url_for('XML') }}" class="header-link">XML Visualizer</a>
@@ -24,7 +22,7 @@
         <div class="drop-area" id="dropArea" onclick="document.getElementById('file-input').click();">
             <input type="file" id="file-input" class="file-input" accept=".csv"/>
             Drag and drop your CSV file here or click to upload
-        </div>        
+        </div>      
         <div id="csvOutput"></div>
     </div>
     <br><br><br><br><br>
