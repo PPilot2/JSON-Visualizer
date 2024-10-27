@@ -119,11 +119,23 @@ function handleDrop(e) {
         reader.onload = function(e) {
             const csvData = e.target.result;
             document.getElementById('csvInput').value = csvData;
-            renderCSV();
+            renderCSV(csvData); // Pass csvData directly
         };
         reader.readAsText(file);
     } else {
         csvOutput.style.display = 'block';
         csvOutput.innerHTML = `<p style="color: red; font-weight: bold;">Please drop a valid CSV file.</p>`;
     }
+}
+
+function downloadCSV() {
+    const csvData = document.getElementById('csvInput').value;
+    const blob = new Blob([csvData], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'download.csv';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
 }

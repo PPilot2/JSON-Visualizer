@@ -9,7 +9,7 @@ body {
     max-width: 60%;
     margin: auto;
     background: white;
-    padding: 20px;
+    padding: 10px 20px 10px 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-top: 80px;
@@ -40,7 +40,6 @@ textarea {
 button, input {
     flex: 1; /* Makes both buttons take equal space */
     padding: 10px;
-    margin: 0 5px; /* Add some space between buttons */
     background-color: #007BFF;
     color: white;
     border: none;
@@ -61,6 +60,12 @@ input[type="file"] {
     position: absolute;
     opacity: 0; /* Make input invisible but clickable */
     cursor: pointer;
+}
+#containerButtons {
+
+}
+.downloadButton {
+    margin-top: 10px;
 }
 #jsonOutput, #csvOutput, #xmlOutput{
     margin-top: 10px;
