@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('JSON.html')
 
 @app.route("/JSON")
 def JSON():
