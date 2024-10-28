@@ -1,3 +1,30 @@
-pycache/
-#test commit
-#anotha one
+# Python cache files
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment
+venv/
+env/
+
+# Model-related files
+*.pt
+*.pth
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Flask specific
+instance/
+*.db
+*.sqlite3
+
+# System files
+.DS_Store
+Thumbs.db
+
+# VS Code settings (if using VS Code)
+.vscode/
+
+# Ignore all hidden files and folders (optional)
+.*
