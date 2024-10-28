@@ -14,21 +14,34 @@
         <a href="{{ url_for('XML') }}" class="header-link">XML Visualizer</a>
     </header>
     <div class="container">
-        <h1>CSV Visualizer</h1>
+        <div class="header-container">
+            <h1>CSV Visualizer
+                <button id="openPopupButton" class="circular-plus-btn">+</button>
+            </h1>
+        </div>        
+
+        <div id="popupOverlay" class="popup-overlay">
+            <div id="popup" class="popup">
+                <button id="closePopupButton" class="close-btn">X</button>
+                <h2>Create a CSV table</h2>
+                <textarea id="popupInput" placeholder="Enter a prompt"></textarea>
+                <div class="button-container">
+                    <button id="submitPopupButton" onclick="submitPrompt()">Create</button>
+                </div>
+            </div>
+        </div>
+
         <textarea id="csvInput" placeholder="Paste your CSV here or upload below" maxlength="15000"></textarea>
         <div class="button-container">
             <button id="renderButton" onclick="renderCSV()">Render CSV</button>
+            <button id="downloadButton" onclick="downloadCSV()">Download CSV</button>
         </div>
         <div class="drop-area" id="dropArea" onclick="document.getElementById('file-input').click();">
             <input type="file" id="file-input" class="file-input" accept=".csv"/>
             Drag and drop your CSV file here or click to upload
         </div>        
         <div id="csvOutput"></div>
-        <div class="button-container">
-            <button id="downloadButton" onclick="downloadCSV()">Download CSV</button>
-        </div>
     </div>
-    <br><br><br><br><br>
     <div id="footer">Created by <a href="https://github.com/PPilot2">Prahalad Anand</a></div>
     <script type="text/javascript" src="{{url_for('static', filename='csv.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>

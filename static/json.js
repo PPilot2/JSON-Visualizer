@@ -2,6 +2,7 @@ const jsonOutput = document.getElementById('jsonOutput');
 jsonOutput.style.display = 'none';
 
 function renderButton() {
+    event.stopPropagation(); 
     const jsonInput = document.getElementById('jsonInput').value;
     const expandButton = document.getElementById('expandButton');
     jsonOutput.style.display = 'block'; // Show the output div

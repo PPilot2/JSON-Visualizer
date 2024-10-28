@@ -4,6 +4,7 @@ const errorOutput = document.getElementById('errorOutput');
 xmlOutput.style.display = 'none';
 
 function renderXML() {
+    event.stopPropagation(); 
     const xmlInput = document.getElementById('xmlInput').value;
     errorOutput.innerHTML = ''; // Clear error messages
 

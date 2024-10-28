@@ -2,6 +2,37 @@ const csvOutput = document.getElementById('csvOutput');
 csvOutput.style.display = 'none';
 let defaultRowCount = 50; // Set default row count
 
+function submitPrompt() {
+    const prompt = document.getElementById("popupInput").value;
+
+    fetch("/generate_csv", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ prompt: prompt })
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Assuming renderCSV expects a string of CSV data
+        renderCSV(data.csv_data);
+        const csvTextArea = document.getElementById("csvInput");
+        csvTextArea.value = data.csv_data;
+        document.getElementById('popupOverlay').style.display = 'none';
+    })
+    .catch(error => console.error("Error:", error));
+}
+
+// Open and close popup
+document.getElementById('openPopupButton').onclick = function() {
+    document.getElementById('popupOverlay').style.display = 'flex';
+};
+
+document.getElementById('closePopupButton').onclick = function() {
+    document.getElementById('popupOverlay').style.display = 'none';
+};
+
+
 function renderCSV(csvData) {
     csvOutput.style.display = 'block';
 
@@ -134,7 +165,9 @@ function downloadCSV() {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'download.csv';
+    const date = new Date();
+    let dateText = date.toDateString();
+    a.download = 'download ' + dateText + '.csv';
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);

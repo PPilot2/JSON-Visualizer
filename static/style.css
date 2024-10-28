@@ -13,6 +13,7 @@ body {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-top: 80px;
+    margin-bottom: 90px;
 }
 
 h1 {
@@ -60,9 +61,6 @@ input[type="file"] {
     position: absolute;
     opacity: 0; /* Make input invisible but clickable */
     cursor: pointer;
-}
-#containerButtons {
-
 }
 .downloadButton {
     margin-top: 10px;
@@ -279,4 +277,90 @@ a:hover {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: #555; 
+}
+
+/* Circular Plus Button */
+.circular-plus-btn {
+    position: absolute;
+    right: 0px; /* Adjust distance from right as needed */
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.circular-plus-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Popup Overlay */
+.popup-overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent gray */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Popup */
+.popup {
+    background-color: white;
+    width: 50%;
+    padding: 10px 20px 10px 20px;
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #007BFF;
+}
+.close-btn:hover {
+    background: none;
+}
+
+textarea#popupInput {
+    width: calc(100% - 22px);
+    height: 100px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 16px;
+    resize: none;
+    background-color: rgb(241, 241, 241);
+}
+
+/* Header container */
+.header-container {
+    position: relative;
+    text-align: center;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+/* Centered title */
+.header-container h1 {
+    margin: 0;
 }
