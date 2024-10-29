@@ -1,11 +1,13 @@
 # Python cache files
-__pycache__/
+__pycache__/*
 *.py[cod]
 *.pyo
 
 # Virtual environment
 venv/
 env/
+
+.env
 
 # Model-related files
 *.pt
@@ -28,3 +30,7 @@ Thumbs.db
 
 # Ignore all hidden files and folders (optional)
 .*
+logs/*
+results/*
+model_output/*
+t5-csv-generator/*

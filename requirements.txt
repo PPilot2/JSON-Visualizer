@@ -2,3 +2,5 @@ Flask==2.3.2
 pandas==2.0.3
 torch==2.0.1
 transformers==4.30.2
+python-dotenv==1.0.1
+tf-keras==2.18.0
