@@ -2,10 +2,12 @@ from flask import Flask, redirect, url_for, render_template, request, jsonify
 import pandas as pd
 from openai import OpenAI
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 # Set your API key
 
-os.environ['OPENAI_API_KEY'] = 'sk-proj-8AXdCp7kqTq8jR0wEFeFT3BlbkFJhv5fT30dNou1q6djcjnS'
+os.environ['OPENAI_API_KEY'] = os.getenv('OPENAI_API_KEY')
 
 client = OpenAI()
 
