@@ -11,10 +11,6 @@ os.environ['OPENAI_API_KEY'] = os.getenv('OPENAI_API_KEY')
 
 client = OpenAI()
 
-# prompt = "Generate CSV for me with car brand, car sold, and date sold."
-
-# print(response.choices[0].message.content)
-
 app = Flask(__name__)
 
 @app.route('/')
