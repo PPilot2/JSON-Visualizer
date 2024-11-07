@@ -14,7 +14,24 @@
         <a href="{{ url_for('XML') }}" class="header-link">XML Visualizer</a>
     </header>
     <div class="container">
-        <h1>JSON Visualizer</h1>
+        <div class="header-container">
+            <h1>JSON Visualizer
+                <button id="openPopupButton" class="circular-plus-btn">+</button>
+            </h1>
+        </div>
+
+        <div id="popupOverlay" class="popup-overlay">
+            <div id="popup" class="popup">
+                <button id="closePopupButton" class="close-btn">X</button>
+                <h2>Create JSON Data</h2>
+                <p>Max entries: 60</p>
+                <textarea id="popupInput" placeholder="Enter a prompt"></textarea>
+                <div class="button-container">
+                    <button id="submitPopupButton" onclick="generateJSONFromPrompt()">Create</button>
+                </div>
+            </div>
+        </div>
+
         <textarea id="jsonInput" placeholder="Paste your JSON here or upload below" maxlength="15000"></textarea>
         <div class="button-container">
             <button id="renderButton" onclick="renderButton()">Render JSON</button>
@@ -25,9 +42,17 @@
         </div>   
         <div id="jsonOutput"></div>
     </div>
+
     <input type="file" id="file-input" class="file-input" accept=".json"/>     
-    <br><br><br><br><br>
+
+    <div id="loadingSpinner" style="display: none;">
+        <div></div>
+    </div>
+
+    <button id="backToTopBtn" class="back-to-top-btn">↑</button>
+
     <div id="footer">Created by <a href="https://github.com/PPilot2">Prahalad Anand</a></div>
     <script type="text/javascript" src="{{url_for('static', filename='json.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
 </body>
 </html>
