@@ -5,7 +5,6 @@ xmlOutput.style.display = 'none';
 
 document.getElementById('file-input').addEventListener('change', function(event) {
     const file = event.target.files[0]; // Get the uploaded file
-    const xmlOutput = document.getElementById('xmlOutput'); // Ensure you have the correct output element
 
     if (file) {
         if (file.type === 'application/xml' || file.type === 'text/xml') { // Check if it's an XML file
@@ -16,7 +15,7 @@ document.getElementById('file-input').addEventListener('change', function(event)
                 if (xmlData.length <= 15000) {
                     document.getElementById('xmlInput').value = xmlData;
                     renderXML(); // Call your function to handle rendering the XML
-                    xmlOutput.style.display = 'block'; // Hide the output div if input is valid
+                    xmlOutput.style.display = 'block'; // Show the output div if input is valid
                 } else {
                     console.log("overflow error");
                     xmlOutput.style.display = 'block'; // Show the output div for error
@@ -35,9 +34,42 @@ document.getElementById('file-input').addEventListener('change', function(event)
     }
 });
 
+// Prevent default behavior and stop propagation
+function preventDefaults(e) {
+    e.preventDefault();
+    e.stopPropagation();
+}
 
+function highlight() {
+    dropArea.classList.add('highlight');
+}
+
+function unhighlight() {
+    dropArea.classList.remove('highlight');
+}
+
+function handleDrop(e) {
+    const dt = e.dataTransfer;
+    const file = dt.files[0];
+
+    if (file && file.type === 'text/xml') {
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+            const xmlData = e.target.result;
+            document.getElementById('xmlInput').value = xmlData;
+            renderXML();
+        };
+
+        reader.readAsText(file);
+    } else {
+        errorOutput.innerHTML = `<p>Please drop a valid XML file.</p>`;
+    }
+}
+
+// Render XML function
 function renderXML() {
-    event.stopPropagation(); 
+    event.stopPropagation();  // Stop event propagation
     const xmlInput = document.getElementById('xmlInput').value;
     errorOutput.innerHTML = ''; // Clear error messages
 
@@ -148,35 +180,3 @@ const dropArea = document.getElementById('dropArea');
 });
 
 dropArea.addEventListener('drop', handleDrop, false);
-
-function preventDefaults(e) {
-    e.preventDefault();
-    e.stopPropagation();
-}
-
-function highlight() {
-    dropArea.classList.add('highlight');
-}
-
-function unhighlight() {
-    dropArea.classList.remove('highlight');
-}
-
-function handleDrop(e) {
-    const dt = e.dataTransfer;
-    const file = dt.files[0];
-
-    if (file && file.type === 'text/xml') {
-        const reader = new FileReader();
-
-        reader.onload = function(e) {
-            const xmlData = e.target.result;
-            document.getElementById('xmlInput').value = xmlData;
-            renderXML();
-        };
-
-        reader.readAsText(file);
-    } else {
-        errorOutput.innerHTML = `<p>Please drop a valid XML file.</p>`;
-    }
-}

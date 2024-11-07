@@ -210,6 +210,9 @@ a:hover {
 .drop-area.highlight {
     background-color: #e7f0ff; /* Light blue background on hover */
 }
+.drop-area:hover {
+    background-color: #e7f0ff;
+}
 /* CSV Table Styling */
 .csv-table {
     width: 100%;

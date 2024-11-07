@@ -1,4 +1,6 @@
 document.getElementById('file-input').addEventListener('change', function(event) {
+    event.stopImmediatePropagation(); // Prevent further propagation
+
     const file = event.target.files[0]; // Get the uploaded file
     const jsonOutput = document.getElementById('jsonOutput'); // Ensure you have the correct output element
 
@@ -54,7 +56,7 @@ dropArea.addEventListener('drop', handleDrop, false);
 // Prevent default behavior
 function preventDefaults(e) {
     e.preventDefault();
-    e.stopPropagation();
+    e.stopPropagation(); // Prevent propagation to stop event from triggering multiple times
 }
 
 function highlight() {
@@ -66,6 +68,8 @@ function unhighlight() {
 }
 
 function handleDrop(e) {
+    e.stopImmediatePropagation(); // Prevent further propagation of the drop event
+
     const dt = e.dataTransfer;
     const file = dt.files[0];
 
@@ -74,12 +78,12 @@ function handleDrop(e) {
 
         reader.onload = function(e) {
             const jsonData = e.target.result;
-            if (jsonData.length <= 15000){
+            if (jsonData.length <= 15000) {
                 document.getElementById('jsonInput').value = jsonData;
                 renderJSON();
             } else {
                 console.log("overflowerror drag drop")
-                jsonOutput.innerHTML = `<p style="color: red; font-weight: bold;">Max length of 15000 characters.</p>`
+                jsonOutput.innerHTML = `<p style="color: red; font-weight: bold;">Max length of 15000 characters.</p>`;
             }
         };
 
@@ -89,6 +93,7 @@ function handleDrop(e) {
         jsonOutput.innerHTML = `<p style="color: red; font-weight: bold;">Please drop a valid JSON file.</p>`;
     }
 }
+
 const jsonOutput = document.getElementById('jsonOutput');
 jsonOutput.style.display = 'none';
 
