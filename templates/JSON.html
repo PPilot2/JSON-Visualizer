@@ -13,7 +13,7 @@
         <div class="verticalLine"></div>
         <a href="{{ url_for('XML') }}" class="header-link">XML Visualizer</a>
     </header>
-    <div class="container">
+    <div class="container-json">
         <div class="header-container">
             <h1>JSON Visualizer
                 <button id="openPopupButton" class="circular-plus-btn">+</button>
@@ -34,7 +34,7 @@
 
         <textarea id="jsonInput" placeholder="Paste your JSON here or upload below" maxlength="15000"></textarea>
         <div class="button-container">
-            <button id="renderButton" onclick="renderButton()">Render JSON</button>
+            <button id="renderButton" onclick="renderJSON()">Render JSON</button>
             <button id="expandButton" disabled>Expand All</button>
         </div>
         <div class="drop-area" id="dropArea" onclick="document.getElementById('file-input').click();">

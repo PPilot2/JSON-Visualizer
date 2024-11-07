@@ -3,6 +3,39 @@ const expandButton = document.getElementById('expandButton');
 const errorOutput = document.getElementById('errorOutput');
 xmlOutput.style.display = 'none';
 
+document.getElementById('file-input').addEventListener('change', function(event) {
+    const file = event.target.files[0]; // Get the uploaded file
+    const xmlOutput = document.getElementById('xmlOutput'); // Ensure you have the correct output element
+
+    if (file) {
+        if (file.type === 'application/xml' || file.type === 'text/xml') { // Check if it's an XML file
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                const xmlData = e.target.result;
+                if (xmlData.length <= 15000) {
+                    document.getElementById('xmlInput').value = xmlData;
+                    renderXML(); // Call your function to handle rendering the XML
+                    xmlOutput.style.display = 'block'; // Hide the output div if input is valid
+                } else {
+                    console.log("overflow error");
+                    xmlOutput.style.display = 'block'; // Show the output div for error
+                    xmlOutput.innerHTML = `<p style="color: red; font-weight: bold;">Max length of 15000 characters.</p>`;
+                }
+            };
+
+            reader.readAsText(file); // Read the file as text
+        } else {
+            xmlOutput.style.display = 'block'; // Show the output div for error
+            xmlOutput.innerHTML = `<p style="color: red; font-weight: bold;">Please upload a valid XML file.</p>`; // Alert for invalid files
+        }
+    } else {
+        xmlOutput.style.display = 'block'; // Show the output div for error
+        xmlOutput.innerHTML = `<p style="color: red; font-weight: bold;">No file selected. Please upload a file.</p>`;
+    }
+});
+
+
 function renderXML() {
     event.stopPropagation(); 
     const xmlInput = document.getElementById('xmlInput').value;
