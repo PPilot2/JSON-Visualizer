@@ -1,9 +1,29 @@
 const csvOutput = document.getElementById('csvOutput');
+const loadMoreBtnContainer = document.getElementById('loadMoreBtnContainer'); // Create a container for the "Load More" button
 csvOutput.style.display = 'none';
 let defaultRowCount = 50; // Set default row count
 
-function submitPrompt() {
+let backToTopBtn = document.getElementById("backToTopBtn");
+
+// Show the button when the user scrolls down 100px from the top
+window.onscroll = function() {
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        backToTopBtn.style.display = "block";
+    } else {
+        backToTopBtn.style.display = "none";
+    }
+};
+
+// Scroll to the top when the button is clicked
+backToTopBtn.onclick = function() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function generateCSVFromPrompt() {
     const prompt = document.getElementById("popupInput").value;
+    
+    // Show the spinner
+    document.getElementById("loadingSpinner").style.display = "block";
 
     fetch("/generate_csv", {
         method: "POST",
@@ -14,14 +34,18 @@ function submitPrompt() {
     })
     .then(response => response.json())
     .then(data => {
-        // Assuming renderCSV expects a string of CSV data
         renderCSV(data.csv_data);
         const csvTextArea = document.getElementById("csvInput");
         csvTextArea.value = data.csv_data;
+        document.getElementById("loadingSpinner").style.display = "none";
         document.getElementById('popupOverlay').style.display = 'none';
     })
-    .catch(error => console.error("Error:", error));
+    .catch(error => {
+        document.getElementById("loadingSpinner").style.display = "none";
+        console.error("Error:", error);
+    });
 }
+
 
 // Open and close popup
 document.getElementById('openPopupButton').onclick = function() {
@@ -79,7 +103,10 @@ function createTable(data) {
             defaultRowCount += 10;
             renderCSV(document.getElementById('csvInput').value);
         };
-        csvOutput.appendChild(loadMoreBtn);
+
+        // Add the load more button outside the table container
+        loadMoreBtnContainer.innerHTML = ''; // Clear previous buttons
+        loadMoreBtnContainer.appendChild(loadMoreBtn);
     }
 
     return table;

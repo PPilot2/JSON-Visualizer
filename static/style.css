@@ -3,6 +3,7 @@ body {
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
+    width: 100%;
 }
 
 .container {
@@ -35,7 +36,13 @@ textarea {
 .button-container {
     display: flex;
     justify-content: space-between;
-    margin: 10px 0;
+    margin-top: 7px;
+}
+.button-container button {
+    margin-right: 4px;
+}
+.button-container button:last-child{
+    margin-right: 0px;
 }
 
 button, input {
@@ -73,12 +80,12 @@ input[type="file"] {
     border-radius: 4px;
     overflow-y: auto;
 }
-
 .loadMoreBtn {
     margin: 0;
     width: 100%;
     margin-top: 5px;
     margin-bottom: 10px;
+    position: sticky;
 }
 
 /* JSON List */
@@ -131,7 +138,7 @@ header {
     background-color: #007BFF;
     width: 100%;
     top: 0;
-    position: fixed;
+    position: absolute;
     text-align: center;
     display: flex;
     align-content: center;
@@ -205,6 +212,31 @@ a:hover {
 .csv-table tr:hover {
     background-color: #ddd;
 }
+/* Add this to your CSS file */
+#loadingSpinner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    display: none; /* Hide by default */
+}
+
+#loadingSpinner div {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #888; /* Light gray */
+    border-top: 5px solid #3498db; /* Blue color */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* Spinner animation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 
 .home-container {
     max-width: 60%;
@@ -358,9 +390,34 @@ textarea#popupInput {
     text-align: center;
     padding-bottom: 20px;
     padding-top: 20px;
+    z-index: 0;
 }
 
 /* Centered title */
 .header-container h1 {
     margin: 0;
+}
+
+/* Style for the back-to-top button */
+.back-to-top-btn {
+    position: fixed;
+    bottom: 20px;  /* Position it at the bottom of the screen */
+    right: 20px;   /* Position it to the right side */
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 100%;
+    padding: 15px;
+    font-size: 20px;
+    height: 60px;
+    width: 60px;
+    cursor: pointer;
+    display: none;  /* Hidden by default */
+    z-index: 1000;  /* Ensure it stays on top */
+    transition: background-color 0.1s;
+    margin-bottom: 60px;
+}
+
+.back-to-top-btn:hover {
+    background-color: #0056b3;  /* Darker blue when hovering */
 }

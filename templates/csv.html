@@ -24,9 +24,10 @@
             <div id="popup" class="popup">
                 <button id="closePopupButton" class="close-btn">X</button>
                 <h2>Create a CSV table</h2>
+                <p>Max entries: 60</p>
                 <textarea id="popupInput" placeholder="Enter a prompt"></textarea>
                 <div class="button-container">
-                    <button id="submitPopupButton" onclick="submitPrompt()">Create</button>
+                    <button id="submitPopupButton" onclick="generateCSVFromPrompt()">Create</button>
                 </div>
             </div>
         </div>
@@ -39,9 +40,17 @@
         <div class="drop-area" id="dropArea" onclick="document.getElementById('file-input').click();">
             <input type="file" id="file-input" class="file-input" accept=".csv"/>
             Drag and drop your CSV file here or click to upload
-        </div>        
+        </div>
         <div id="csvOutput"></div>
+        <div id="loadMoreBtnContainer"></div>
     </div>
+
+    <div id="loadingSpinner" style="display: none;">
+        <div></div>
+    </div>
+
+    <button id="backToTopBtn" class="back-to-top-btn">↑</button>
+
     <div id="footer">Created by <a href="https://github.com/PPilot2">Prahalad Anand</a></div>
     <script type="text/javascript" src="{{url_for('static', filename='csv.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
