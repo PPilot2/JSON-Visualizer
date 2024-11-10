@@ -3,6 +3,14 @@ const expandButton = document.getElementById('expandButton');
 const errorOutput = document.getElementById('errorOutput');
 xmlOutput.style.display = 'none';
 
+document.getElementById('openPopupButton').onclick = function() {
+    document.getElementById('popupOverlay').style.display = 'flex';
+};
+
+document.getElementById('closePopupButton').onclick = function() {
+    document.getElementById('popupOverlay').style.display = 'none';
+};
+
 document.getElementById('file-input').addEventListener('change', function(event) {
     const file = event.target.files[0]; // Get the uploaded file
 
@@ -71,7 +79,7 @@ function handleDrop(e) {
 function renderXML() {
     event.stopPropagation();  // Stop event propagation
     const xmlInput = document.getElementById('xmlInput').value;
-    errorOutput.innerHTML = ''; // Clear error messages
+    // errorOutput.innerHTML = ''; // Clear error messages
 
     try {
         const parser = new DOMParser();
