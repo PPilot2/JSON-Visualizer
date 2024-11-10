@@ -1,63 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JSON Visualizer</title>
-    <link rel="stylesheet" href="static/style.css">
-</head>
-<body>
-    <br>
-    <header id="header">
-        <a href="{{ url_for('CSV') }}" class="header-link">CSV Visualizer</a>
-        <div class="verticalLine"></div>
-        <a href="{{ url_for('XML') }}" class="header-link">XML Visualizer</a>
-    </header>
-    <div class="container-json">
-        <div class="header-container">
-            <h1>JSON Visualizer
-                <button id="openPopupButton" class="circular-plus-btn">+</button>
-            </h1>
-        </div>
-
-        <div id="popupOverlay" class="popup-overlay">
-            <div id="popup" class="popup">
-                <button id="closePopupButton" class="close-btn">X</button>
-                <h2>Generate JSON Data</h2>
-                <p>Max entries: 60</p>
-                <textarea id="popupInput" placeholder="Enter a prompt"></textarea>
-                <div class="button-container">
-                    <button id="submitPopupButton" onclick="generateJSONFromPrompt()">Create</button>
-                </div>
-            </div>
-        </div>
-        <div id="textarea-container">
-            <textarea id="jsonInput" placeholder="Paste your JSON here or upload below" maxlength="15000"></textarea>
-        </div>
-        <div class="button-container">
-            <button id="renderButton" onclick="renderJSON()">Render JSON</button>
-            <button id="expandButton" disabled>Expand All</button>
-        </div>
-        <div class="drop-area" id="dropArea" onclick="document.getElementById('file-input').click();">
-            Drag and drop your JSON file here or click to upload
-        </div>   
-        <div id="jsonOutput"></div>
-    </div>
-
-    <input type="file" id="file-input" class="file-input" accept=".json"/>     
-
-    <div id="loadingSpinner" style="display: none;">
-        <div></div>
-    </div>
-
-    <button id="backToTopBtn" class="back-to-top-btn">↑</button>
-
-    <div id="footer">Created by <a href="https://github.com/PPilot2">Prahalad Anand</a></div>
-    <script type="text/javascript" src="{{url_for('static', filename='json.js')}}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
-</body>
-</html> -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -107,57 +47,12 @@
             background-color: #f3f4f6;  /* Light gray background when popup is active */
             pointer-events: none;  /* Disable input during popup */
         }
-        #jsonOutput{
-            margin-top: 10px;
-            padding: 10px;
-            background: rgb(241, 241, 241);
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            overflow-y: auto;
-            max-height: 800px;
-        }
-        .toggle-btn {
-            cursor: pointer;
-            font-weight: bold;
-            margin-right: 5px;
-            color: #007BFF;
-        }
-
-        .toggle-btn:hover {
-            color: #0056b3;
-        }
-
-        ul {
-            list-style-type: none;
-        }
-
-        li {
-            margin-bottom: 5px;
-        }
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-
-        /* Track */
-        ::-webkit-scrollbar-track {
-            background: #b2b2b2; 
-        }
-
-        /* Handle */
-        ::-webkit-scrollbar-thumb {
-            background: #888; 
-        }
-
-        /* Handle on hover */
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555; 
-        }
     </style>
 </head>
 <body class="bg-gray-100">
 
     <!-- Navbar -->
-    <header class="bg-blue-600 shadow-md py-4 sticky top-0">
+    <header class="bg-blue-600 shadow-md py-4">
         <nav class="container mx-auto flex justify-between items-center px-4">
             <!-- Logo or Title -->
             <a href="#" class="text-white text-2xl font-bold hover:text-gray-300 transition duration-300">JSON Visualizer</a>
@@ -179,7 +74,7 @@
         </nav>
     </header>
 
-    <div class="container-json mx-auto max-w-2xl bg-white p-6 rounded-lg shadow-lg my-8 mb-20 z-0">
+    <div class="container-json mx-auto max-w-2xl bg-white p-6 rounded-lg shadow-lg my-8">
         <div class="header-container flex justify-between items-center mb-6">
             <h1 class="text-2xl font-semibold text-gray-800">JSON Visualizer</h1>
             <button id="openPopupButton" class="circular-plus-btn bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center hover:bg-blue-700 transition duration-300">+</button>
@@ -198,7 +93,7 @@
             </div>
         </div>
 
-        <div id="textarea-container" class="mb-3">
+        <div id="textarea-container" class="relative mb-6">
             <textarea id="jsonInput" placeholder="Paste your JSON here or upload below" maxlength="15000" class="w-full h-48 p-2 border border-gray-300 rounded-md bg-gray-50 resize-none"></textarea>
         </div>
 
@@ -211,7 +106,7 @@
             Drag and drop your JSON file here or click to upload
         </div>   
 
-        <div id="jsonOutput" class="hidden"></div>
+        <div id="jsonOutput" class="mt-4 p-4 bg-gray-50 border border-gray-300 rounded-md overflow-y-auto max-h-80 hidden"></div>
     </div>
 
     <input type="file" id="file-input" class="file-input opacity-0 cursor-pointer" accept=".json"/>     
@@ -228,5 +123,42 @@
 
     <script type="text/javascript" src="{{url_for('static', filename='json.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+
+    <script>
+        // Popup Show/Hide
+        document.getElementById('openPopupButton').addEventListener('click', () => {
+            document.getElementById('popupOverlay').classList.remove('hidden');
+            document.getElementById('popupOverlay').style.display = 'flex';  // Show overlay
+            document.body.classList.add('overlay-active');  // Apply background overlay
+        });
+
+        document.getElementById('closePopupButton').addEventListener('click', () => {
+            document.getElementById('popupOverlay').style.display = 'none'; // Hide overlay
+            document.body.classList.remove('overlay-active');  // Remove overlay background
+        });
+
+        // Render JSON Output
+        function renderJSON() {
+            const jsonOutput = document.getElementById('jsonOutput');
+            const jsonInput = document.getElementById('jsonInput').value;
+
+            try {
+                const parsedData = JSON.parse(jsonInput);
+                jsonOutput.classList.remove('hidden');
+                jsonOutput.innerHTML = JSON.stringify(parsedData, null, 2); // Pretty print JSON
+            } catch (e) {
+                alert("Invalid JSON format");
+            }
+        }
+
+        // Show/Hide Back to Top Button
+        window.onscroll = function () {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                document.getElementById('backToTopBtn').style.display = "block";
+            } else {
+                document.getElementById('backToTopBtn').style.display = "none";
+            }
+        };
+    </script>
 </body>
 </html>

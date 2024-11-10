@@ -32,6 +32,11 @@ document.getElementById('file-input').addEventListener('change', function(event)
     }
 });
 
+function handleButtonClick() {
+    // Your button click logic here
+    alert("Overlay button clicked!");
+}
+
 const dropArea = document.getElementById('dropArea');
 
 // Prevent default behaviors (prevent file from being opened)
@@ -137,19 +142,23 @@ function renderJSON() {
     const jsonOutput = document.getElementById('jsonOutput');
     const expandButton = document.getElementById('expandButton');
 
-    jsonOutput.style.display = 'block';
+    jsonOutput.style.display = 'block'; // Ensure output area is visible
 
     try {
+        // Try parsing the input JSON
         const jsonData = JSON.parse(jsonInput);
-        jsonOutput.innerHTML = '';
-        jsonOutput.appendChild(createNestedList(jsonData));
+        jsonOutput.innerHTML = '';  // Clear any previous output
+        jsonOutput.appendChild(createNestedList(jsonData, 0));  // Render JSON with indentation (0 for the root level)
+        
+        // Enable the expand button after rendering
         expandButton.disabled = false;
+
     } catch (e) {
+        // If parsing fails, display the error message
         jsonOutput.innerHTML = `<p style="color: red; font-weight: bold;">Invalid JSON: ${e.message}</p>`;
-        expandButton.disabled = true;
+        expandButton.disabled = true;  // Disable expand button if there's an error
     }
 }
-
 // Expand all functionality
 let isExpanded = false;
 document.getElementById('expandButton').addEventListener('click', function() {
@@ -171,18 +180,23 @@ document.getElementById('expandButton').addEventListener('click', function() {
     isExpanded = !isExpanded;
 });
 
-function createNestedList(data) {
+function createNestedList(data, level) {
     const ul = document.createElement('ul');
+    
+    // Apply indentation based on the level
+    ul.style.paddingLeft = `${level * 10}px`;
+
     for (const key in data) {
         const li = document.createElement('li');
 
         if (typeof data[key] === 'object' && data[key] !== null) {
+            // Nested object: create a toggle button and recursively render its content
             const toggleButton = document.createElement('span');
             toggleButton.textContent = '[+]';
             toggleButton.classList.add('toggle-btn');
 
-            const nestedList = createNestedList(data[key]);
-            nestedList.style.display = 'none';
+            const nestedList = createNestedList(data[key], level + 1); // Increase indentation level for nested objects
+            nestedList.style.display = 'none';  // Start hidden
 
             toggleButton.addEventListener('click', function() {
                 if (nestedList.style.display === 'none') {
@@ -198,10 +212,12 @@ function createNestedList(data) {
             li.appendChild(document.createTextNode(key + ': '));
             li.appendChild(nestedList);
         } else {
+            // Simple key-value pair
             li.textContent = `${key}: ${data[key]}`;
         }
 
         ul.appendChild(li);
     }
+
     return ul;
 }

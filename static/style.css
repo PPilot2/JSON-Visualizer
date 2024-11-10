@@ -54,6 +54,30 @@ textarea {
     background-color: rgb(241, 241, 241);
 }
 
+.textarea-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+#overlayButton {
+    position: absolute;
+    /* right: 10px; */
+    padding: 5px 10px;
+    font-size: 18px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 10;
+    transition: background-color 0.3s;
+}
+
+#overlayButton:hover {
+    background-color: #0056b3;
+}
+
 .button-container {
     display: flex;
     justify-content: space-between;
@@ -192,9 +216,6 @@ header {
 a {
     color: white;
     text-decoration: underline;
-}
-a:hover {
-    font-weight: bold;
 }
 
 .drop-area {
