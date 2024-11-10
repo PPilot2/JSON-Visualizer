@@ -130,7 +130,7 @@
         <div id="popupOverlay" class="popup-overlay fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden">
             <div id="popup" class="popup bg-white p-6 rounded-lg shadow-lg relative">
                 <button id="closePopupButton" class="close-btn absolute top-2 right-2 text-blue-600 font-bold text-xl hover:bg-blue-100 transition duration-300">X</button>
-                <h2 class="text-lg font-semibold text-gray-800">Generate XML Data</h2>
+                <h2 class="text-lg font-semibold text-gray-800">Generate XML</h2>
                 <p class="text-sm text-gray-600">Max entries: 60</p>
                 <textarea id="popupInput" placeholder="Enter a prompt" class="w-full h-24 p-2 mt-2 border border-gray-300 rounded-md bg-gray-50 resize-none"></textarea>
                 <div class="button-container mt-4 flex justify-between">
@@ -144,8 +144,8 @@
         </div>
 
         <div class="button-container flex justify-between mb-4 space-x-2">
-            <button id="renderButton" onclick="renderXML()" class="w-full py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-300">Render XML</button>
-            <button id="expandButton" class="w-full py-2 bg-red-600 text-white rounded-md cursor-not-allowed">Expand All</button>
+            <button id="renderButton" onclick="renderXML()" class="w-full py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-300">Render</button>
+            <button id="expandButton" class="w-full py-2 bg-red-600 text-white rounded-md cursor-not-allowed">Expand</button>
         </div>
 
         <div class="drop-area border-2 border-dashed border-blue-600 p-6 text-center text-blue-600 cursor-pointer hover:bg-blue-50 transition duration-300" id="dropArea" onclick="document.getElementById('file-input').click();">

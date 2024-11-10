@@ -3,22 +3,6 @@ const loadMoreBtnContainer = document.getElementById('loadMoreBtnContainer'); //
 csvOutput.style.display = 'none';
 let defaultRowCount = 50; // Set default row count
 
-let backToTopBtn = document.getElementById("backToTopBtn");
-
-// Show the button when the user scrolls down 100px from the top
-window.onscroll = function() {
-    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-        backToTopBtn.style.display = "block";
-    } else {
-        backToTopBtn.style.display = "none";
-    }
-};
-
-// Scroll to the top when the button is clicked
-backToTopBtn.onclick = function() {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-}
-
 function generateCSVFromPrompt() {
     const prompt = document.getElementById("popupInput").value;
     
@@ -194,7 +178,7 @@ function downloadCSV() {
     a.href = url;
     const date = new Date();
     let dateText = date.toDateString();
-    a.download = 'download ' + dateText + '.csv';
+    a.download = dateText + '.csv';
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
