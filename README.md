@@ -87,3 +87,4 @@ To request generated JSON data, use the following POST request:
   "prompt": "Generate a list of products with their IDs, names, and prices."
 }
 
+
