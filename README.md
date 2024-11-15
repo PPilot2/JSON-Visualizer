@@ -88,3 +88,5 @@ To request generated JSON data, use the following POST request:
 }
 
 
+
+Refactor a section for better clarity.
