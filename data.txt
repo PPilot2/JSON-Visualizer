@@ -8,3 +8,5 @@ Fixed typos in the documentation.
 Fixed typos in the documentation.
 
 Refactor a section for better clarity.
+
+Refactor a section for better clarity.
