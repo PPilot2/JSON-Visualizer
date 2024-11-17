@@ -10,3 +10,5 @@ Fixed typos in the documentation.
 Refactor a section for better clarity.
 
 Refactor a section for better clarity.
+
+Fixed typos in the documentation.
