@@ -12,3 +12,5 @@ Refactor a section for better clarity.
 Refactor a section for better clarity.
 
 Fixed typos in the documentation.
+
+Improved documentation for setup process.
