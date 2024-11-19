@@ -14,3 +14,5 @@ Refactor a section for better clarity.
 Fixed typos in the documentation.
 
 Improved documentation for setup process.
+
+Updated example usage for new feature.
