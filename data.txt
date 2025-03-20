@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 Thinking should become your capital asset, no matter whatever ups and downs you come across in your life. ~Dr. APJ Kalam
 
 
@@ -512,3 +513,5 @@ You may have to fight a battle more than once to win it. ~Margaret Thatcher
 
 If you want to achieve greatness stop asking for permission. ~Anonymous
 
+=======
+>>>>>>> 6b51ab4a146dafe6d3f846cea9cd9be79784180e
