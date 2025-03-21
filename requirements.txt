@@ -5,3 +5,4 @@ transformers==4.30.2
 python-dotenv==1.0.1
 tf-keras==2.18.0
 tailwindcss==0.0.1
+gunicorn==23.0.0
