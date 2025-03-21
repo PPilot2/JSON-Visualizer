@@ -1,18 +1,18 @@
 from flask import Flask, redirect, url_for, render_template, request, jsonify
-import pandas as pd
-from openai import OpenAI
-import openai
-import os
+# import pandas as pd
+# from openai import OpenAI
+# import openai
+# import os
 from dotenv import load_dotenv
 load_dotenv()
 
 # Set your API key
 
-os.environ['OPENAI_API_KEY'] = os.getenv('OPENAI_API_KEY')
+# os.environ['OPENAI_API_KEY'] = os.getenv('OPENAI_API_KEY')
 
-openai.api_key = os.getenv('OPENAI_API_KEY')
+# openai.api_key = os.getenv('OPENAI_API_KEY')
 
-client = OpenAI()
+# client = OpenAI()
 
 app = Flask(__name__)
 
