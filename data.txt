@@ -1645,3 +1645,6 @@ You can't connect the dots looking forward; you can only connect them looking ba
 
 Only put off until tomorrow what you are willing to die having left undone. ~Pablo Picasso
 
+
+If you can't explain it simply, you don't understand it well enough. ~Albert Einstein
+
