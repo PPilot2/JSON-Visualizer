@@ -1957,3 +1957,6 @@ You can't connect the dots looking forward; you can only connect them looking ba
 
 To be successful you must accept all challenges that come your way. You can't just accept the ones you like. ~Mike Gafka
 
+
+If you can't explain it simply, you don't understand it well enough. ~Albert Einstein
+
